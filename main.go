@@ -31,7 +31,7 @@ func main() {
 		for {
 			packet := generatePacket()
 			packets <- packet
-			time.Sleep(time.Millisecond * time.Duration(interval)) // Ожидание перед генерацией следующего пакета
+			time.Sleep(time.Millisecond * time.Duration(interval))
 		}
 	}()
 
@@ -61,8 +61,9 @@ func main() {
 		}
 	}()
 
-	close(packets)
 	wg.Wait()
+
+	close(packets)
 	close(results)
 }
 
